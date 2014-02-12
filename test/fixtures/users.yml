@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  deck: MyString
+  win: false
+  loss: false
+  about: MyText
+
+two:
+  name: MyString
+  deck: MyString
+  win: false
+  loss: false
+  about: MyText

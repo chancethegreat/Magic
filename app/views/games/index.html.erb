@@ -1,0 +1,52 @@
+<%- model_class = Game -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:player1) %></th>
+      <th><%= model_class.human_attribute_name(:player1deck) %></th>
+      <th><%= model_class.human_attribute_name(:player2) %></th>
+      <th><%= model_class.human_attribute_name(:player2deck) %></th>
+      <th><%= model_class.human_attribute_name(:player3) %></th>
+      <th><%= model_class.human_attribute_name(:player3deck) %></th>
+      <th><%= model_class.human_attribute_name(:player4) %></th>
+      <th><%= model_class.human_attribute_name(:player4deck) %></th>
+      <th><%= model_class.human_attribute_name(:winner) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= link_to game.id, game_path(game) %></td>
+        <td><%= game.player1 %></td>
+        <td><%= game.player1deck %></td>
+        <td><%= game.player2 %></td>
+        <td><%= game.player2deck %></td>
+        <td><%= game.player3 %></td>
+        <td><%= game.player3deck %></td>
+        <td><%= game.player4 %></td>
+        <td><%= game.player4deck %></td>
+        <td><%= game.winner %></td>
+        <td><%=l game.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_game_path(game), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      game_path(game),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_game_path,
+            :class => 'btn btn-primary' %>
